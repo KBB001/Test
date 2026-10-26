@@ -12,7 +12,6 @@ import { ChatsTab } from './components/ChatsTab.tsx';
 import { MentorTab } from './components/MentorTab.tsx';
 import { VocabularyTab } from './components/VocabularyTab.tsx';
 import { ProfileTab } from './components/ProfileTab.tsx';
-import { ApiSettingsModal } from './components/ApiSettingsModal.tsx';
 
 import {
   INITIAL_USER_PASSPORT,
@@ -27,7 +26,6 @@ import { evaluateUnlockedStamps } from './utils/passport.ts';
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabKey>('feed');
   const [currentLanguage, setCurrentLanguage] = useState<LanguageCode>('ja');
-  const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
 
   // Scroll to top on tab change for clean mobile & desktop UX
   useEffect(() => {
@@ -116,7 +114,6 @@ export default function App() {
         streakDays={passport.streakDays}
         totalWordsLearned={passport.totalWordsLearned}
         globalRank={passport.globalRank}
-        onOpenSettings={() => setIsSettingsOpen(true)}
       />
 
       {/* Concise Tabs Navigation Bar (Desktop + Mobile) */}
@@ -164,19 +161,8 @@ export default function App() {
           />
         )}
 
-        {activeTab === 'profile' && (
-          <ProfileTab 
-            passport={passport} 
-            onOpenSettings={() => setIsSettingsOpen(true)} 
-          />
-        )}
+        {activeTab === 'profile' && <ProfileTab passport={passport} />}
       </main>
-
-      {/* API / GitHub Pages Settings Modal */}
-      <ApiSettingsModal
-        isOpen={isSettingsOpen}
-        onClose={() => setIsSettingsOpen(false)}
-      />
 
       {/* Global Footer (Visible on desktop & mobile with appropriate margins) */}
       <footer className="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500 mb-16 md:mb-0">

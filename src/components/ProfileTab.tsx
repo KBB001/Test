@@ -12,19 +12,16 @@ import {
   ExternalLink,
   ChevronRight,
   Shield,
-  Layers,
-  GitBranch,
-  Settings2
+  Layers
 } from 'lucide-react';
 import { UserPassport, PassportStamp } from '../types/index.ts';
 import { CEFR_DESCRIPTIONS, SUPPORTED_LANGUAGES } from '../utils/language.ts';
 
 interface ProfileTabProps {
   passport: UserPassport;
-  onOpenSettings?: () => void;
 }
 
-export const ProfileTab: React.FC<ProfileTabProps> = ({ passport, onOpenSettings }) => {
+export const ProfileTab: React.FC<ProfileTabProps> = ({ passport }) => {
   const [selectedStamp, setSelectedStamp] = useState<PassportStamp | null>(passport.stamps[0] || null);
   const [copiedShare, setCopiedShare] = useState<boolean>(false);
 
@@ -324,36 +321,6 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({ passport, onOpenSettings
             </div>
           ))}
         </div>
-      </div>
-
-      {/* GitHub Pages Publication Card */}
-      <div className="bg-slate-900 text-white rounded-2xl p-5 shadow-lg border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="flex items-start gap-3.5">
-          <div className="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 text-emerald-400">
-            <GitBranch className="w-5 h-5" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h4 className="text-sm font-bold text-white">Публикация на GitHub Pages</h4>
-              <span className="px-2 py-0.5 text-[10px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full font-mono">
-                Ready for Static CI/CD
-              </span>
-            </div>
-            <p className="text-xs text-slate-300 mt-1 max-w-xl">
-              Приложение полностью оптимизировано для статического хостинга: настроены GitHub Actions (<code className="text-emerald-300 font-mono text-[11px]">deploy.yml</code>), относительные пути <code className="text-emerald-300 font-mono text-[11px]">base: './'</code> и автономный режим работы.
-            </p>
-          </div>
-        </div>
-
-        {onOpenSettings && (
-          <button
-            onClick={onOpenSettings}
-            className="shrink-0 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow-xs flex items-center gap-1.5 transition-colors"
-          >
-            <Settings2 className="w-4 h-4" />
-            Настройки API & Ключ
-          </button>
-        )}
       </div>
     </div>
   );

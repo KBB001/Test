@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Flame, BookOpen, Award, Settings2 } from 'lucide-react';
+import { Globe, Flame, BookOpen, Award } from 'lucide-react';
 import { SUPPORTED_LANGUAGES } from '../utils/language.ts';
 import { LanguageCode } from '../types/index.ts';
 
@@ -9,7 +9,6 @@ interface HeaderProps {
   streakDays: number;
   totalWordsLearned: number;
   globalRank: number;
-  onOpenSettings: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -18,7 +17,6 @@ export const Header: React.FC<HeaderProps> = ({
   streakDays,
   totalWordsLearned,
   globalRank,
-  onOpenSettings,
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-xs transition-all">
@@ -85,16 +83,6 @@ export const Header: React.FC<HeaderProps> = ({
               ))}
             </select>
           </div>
-
-          {/* GitHub / API Settings button */}
-          <button
-            onClick={onOpenSettings}
-            title="Параметры GitHub Pages и API"
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium border border-slate-200 transition-colors"
-          >
-            <Settings2 className="w-3.5 h-3.5 text-slate-600" />
-            <span className="hidden md:inline text-[11px]">GitHub / API</span>
-          </button>
         </div>
       </div>
     </header>
