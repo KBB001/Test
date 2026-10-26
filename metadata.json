@@ -1,0 +1,8 @@
+{
+  "name": "LinguaGlobus",
+  "description": "Международная коммуникационная платформа с лентой контента, чатами с переводом в реальном времени, ИИ-наставником, карточками запоминания и Всемирным паспортом языков.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
